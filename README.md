@@ -108,22 +108,26 @@ cd ~/.config/awesome/scripts
 ```
 ## **3. Demo/Screenshot**
 
-- Wibar
+<p align="center"><b>Wibar</b></p>
+<p align="center">
+  <img src="demo/wibar.png" width="800">
+</p>
 
-<center></center>![[Pasted image 20260826153401.png]]
+<p align="center"><b>Dashboard</b></p>
+<p align="center">
+  <img src="demo/dashboard.png" width="800">
+</p>
 
-+ Dashboard
+<p align="center"><b>Right Dashboard</b></p>
+<p align="center">
+  <img src="demo/right-dashboard.png" width="800">
+</p>
 
-<center></center>![[2026-08-26_15-34-50_area.png]]
+<p align="center"><b>Lock Screen</b></p>
+<p align="center">
+  <img src="demo/lockscreen.png" width="800">
+</p>
 
-+ Right Dashboard
-
-<center></center>![[2026-08-26_15-37-11_area.png]]
-
-
-+ Lock Screen 
-
-<center></center>![[lock_blur 1.png]]
 ## **4. Tree Directory** 
 
 ```
