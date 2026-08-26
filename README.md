@@ -180,3 +180,8 @@ awesome/
     ├── wallpaper.lua
     └── wibar.lua
 ```
+
+## **5. Tech Stack**
+
+- Lua, bash
+
