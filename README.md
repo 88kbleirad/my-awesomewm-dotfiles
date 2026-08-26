@@ -2,7 +2,7 @@
 
 This is my AwesomeWM dotfiles repository. Below is a step-by-step guide on how to set it up.
 
-## **1.Window Manager** 
+## **1. Window Manager** 
 
 Step 1: Install awesome 
 
