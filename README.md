@@ -1,12 +1,12 @@
 # awesomewm-dotfiles
 
-This is my awesomewm dotfile, I will tutorial you how to setup awesomewm dotfile.
+This is my AwesomeWM dotfiles repository. Below is a step-by-step guide on how to set it up.
 
 ## **1.Window Manager** 
 
 Step 1: Install awesome 
 
-+ If you using Arch/Cachy, you could making this way.
++ If you are using Arch/CachyOS, you can install it like this:
 
 ```bash
 yay -S awesomewm-git
@@ -36,7 +36,7 @@ Input Right Mouse -> Choose awesome in menuup -> Click restart
 
 ## **2. Lock Screen**
 
-+ I using `betterlockscreen` and I will tutorial how to setup.
++ I use `betterlockscreen`. Here's how to set it up:
 
 Step 1: Install `betterlockscreen`.
 
