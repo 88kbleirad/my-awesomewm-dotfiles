@@ -13,7 +13,6 @@ Below is a step-by-step guide on how to set it up.
 - [3. Demo/Screenshot](#3-demoscreenshot)
 - [4. Directory Tree](#4-directory-tree)
 - [5. Tech Stack](#5-tech-stack)
-- [License](#license)
 
 ## Overview
 
@@ -229,6 +228,3 @@ awesome/
 - **Lua** – AwesomeWM configuration and widgets
 - **Bash** – setup and lock screen scripts
 
-## License
-
-This project is licensed under the [MIT License](LICENSE) — feel free to use, modify, and share it.
