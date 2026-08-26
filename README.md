@@ -120,7 +120,7 @@ cd ~/.config/awesome/scripts
 
 <p align="center"><b>Right Dashboard</b></p>
 <p align="center">
-  <img src="demo/right-dashboard.png" width="800">
+  <img src="demo/right-dashboard.png" width="400">
 </p>
 
 <p align="center"><b>Lock Screen</b></p>
