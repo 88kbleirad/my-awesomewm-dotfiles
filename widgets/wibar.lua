@@ -7,6 +7,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 local slide_right = require("effects.slide_from_right_to_left")
+local slide_left = require("effects.slide_from_left_to_right")
 
 require("awful.hotkeys_popup.keys")
 
@@ -66,25 +67,6 @@ local dashboard_popup = awful.popup({
 	end,
 })
 
-local right_dashboard_popup = awful.popup({
-	widget = dash.widget,
-	minimum_width = 500,
-	maximum_width = 500,
-	minimum_height = 1080,
-	maximum_height = s.geometry.height,
-	bg = "#1e1e2e",
-	border_width = 0,
-	ontop = true,
-	halign = "right",
-	visible = false,
-	placement = function(c)
-		awful.placement.top_right(c, {
-			margins = { top = 0, right = 0 },
-			honor_workarea = false,
-		})
-	end,
-})
-
 local dashboard_icon_button = wibox.widget({
 	{
 		{
@@ -106,6 +88,25 @@ dashboard_icon_button:buttons(gears.table.join(awful.button({}, 1, function()
 	dashboard_popup.visible = not dashboard_popup.visible
 end)))
 
+local left_custom = slide_left.create_slide_popup_from_left()
+
+awful.keyboard.append_global_keybindings({
+	awful.key({ modkey }, "v", function()
+		left_custom.toggle()
+	end, { description = "Left board custom", group = "awesome" }),
+})
+
+local right_dashboard_popup = slide_right.create_slide_popup_from_right({
+	widget = dash,
+	width = 500,
+	height = 1080,
+	bg = "#1e1e2e",
+	ontop = true,
+	duration_open = 0.4,
+	duration_close = 0.4,
+	steps = 20,
+})
+
 local right_dashboard_icon_button = wibox.widget({
 	{
 		{
@@ -124,7 +125,7 @@ local right_dashboard_icon_button = wibox.widget({
 })
 
 right_dashboard_icon_button:buttons(gears.table.join(awful.button({}, 1, function()
-	right_dashboard_popup.visible = not right_dashboard_popup.visible
+	right_dashboard_popup.toggle()
 end)))
 
 awful.keyboard.append_global_keybindings({
@@ -135,7 +136,7 @@ awful.keyboard.append_global_keybindings({
 
 awful.keyboard.append_global_keybindings({
 	awful.key({ modkey }, "e", function()
-		right_dashboard_popup.visible = not right_dashboard_popup.visible
+		right_dashboard_popup.toggle()
 	end, { description = "Right Toggle Dashboard", group = "awesome" }),
 })
 

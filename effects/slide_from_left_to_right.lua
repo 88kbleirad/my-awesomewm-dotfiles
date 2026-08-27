@@ -2,47 +2,46 @@ local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
 local beautiful = require("beautiful")
-
 local M = {}
-
-function M.create_slide_popup_from_right(opts)
+function M.create_slide_popup_from_left(content_widget)
 	local screen = awful.screen.focused()
 	local sw = screen.geometry.width
 	local sh = screen.geometry.height
-
-	local width = opts.width or math.floor(sw * 0.5)
-	local height = opts.height or sh
-	local y = opts.y or 0
-	local bg = opts.bg or beautiful.bg_normal or "#222222"
-	local ontop = opts.ontop or true
-
-	local duration_open = opts.duration_open or 0.15
-	local duration_close = opts.duration_close or 0.12
-	local steps = opts.steps or 25
-
-	local widget = opts.widget
-	if not widget then
-		error("slide_right: cần tham số 'widget'")
-	end
-
+	local pw = math.floor(sw * 0.9)
+	local ph = sh
+	local y_pos = 0
 	local popup = wibox({
 		visible = false,
-		ontop = ontop,
+		ontop = true,
 		type = "utility",
 		screen = screen,
-		width = width,
-		height = height,
-		x = sw,
-		y = y,
-		bg = bg,
+		width = pw,
+		height = ph,
+		x = -pw,
+		y = y_pos,
+		bg = beautiful.bg_normal or "#222222",
+		fg = beautiful.fg_normal or "#ffffff",
 		shape = gears.shape.rectangle,
 		border_width = 0,
 	})
-
-	popup:setup(widget)
+	if not content_widget then
+		content_widget = {
+			layout = wibox.layout.align.vertical,
+			{
+				layout = wibox.layout.fixed.vertical,
+				{
+					widget = wibox.widget.textbox,
+					text = "🎉 Popup mặc định (từ trái)",
+					font = "sans 24",
+					align = "center",
+					valign = "center",
+				},
+			},
+		}
+	end
+	popup:setup(content_widget)
 	local state = "closed"
 	local timer = nil
-
 	local function stop_timer()
 		if timer then
 			timer:stop()
@@ -53,7 +52,7 @@ function M.create_slide_popup_from_right(opts)
 	local function reset()
 		stop_timer()
 		popup.visible = false
-		popup.x = sw
+		popup.x = pw
 		state = "closed"
 	end
 
@@ -63,11 +62,13 @@ function M.create_slide_popup_from_right(opts)
 		end
 		stop_timer()
 		state = "opening"
+		local start_x = -pw
+		local end_x = 0
 		popup.visible = true
-		popup.x = sw
-		local start_x = sw
-		local end_x = width + 180
-		local step_time = duration_open / steps
+		popup.x = start_x
+		local duration = 0.4
+		local steps = 30
+		local step_time = duration / steps
 		local step = 0
 		timer = gears.timer({
 			timeout = step_time,
@@ -93,8 +94,10 @@ function M.create_slide_popup_from_right(opts)
 		stop_timer()
 		state = "closing"
 		local start_x = popup.x
-		local end_x = sw + 738
-		local step_time = duration_close / steps
+		local end_x = -pw - 1100
+		local duration = 0.4
+		local steps = 25
+		local step_time = duration / steps
 		local step = 0
 		timer = gears.timer({
 			timeout = step_time,
@@ -127,5 +130,4 @@ function M.create_slide_popup_from_right(opts)
 
 	return popup
 end
-
 return M
